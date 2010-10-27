@@ -1,0 +1,218 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"> <style>
+	.KEYW {color: #933;}
+	.COMM {color: #bbb; font-style: italic;}
+	.NUMB {color: #393;}
+	.STRN {color: #393;}
+	.REGX {color: #339;}
+	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
+	</style></head><body><pre><span class='line'>  1</span> <span class="COMM">// MIT License</span><span class="WHIT">
+<span class='line'>  2</span> </span><span class="COMM">// Copyright (c) 2010 Asen Bozhilov</span><span class="WHIT">
+<span class='line'>  3</span> 
+<span class='line'>  4</span> </span><span class="COMM">// Permission is hereby granted, free of charge, to any person</span><span class="WHIT">
+<span class='line'>  5</span> </span><span class="COMM">// obtaining a copy of this software and associated documentation</span><span class="WHIT">
+<span class='line'>  6</span> </span><span class="COMM">// files (the "Software"), to deal in the Software without</span><span class="WHIT">
+<span class='line'>  7</span> </span><span class="COMM">// restriction, including without limitation the rights to use,</span><span class="WHIT">
+<span class='line'>  8</span> </span><span class="COMM">// copy, modify, merge, publish, distribute, sublicense, and/or sell</span><span class="WHIT">
+<span class='line'>  9</span> </span><span class="COMM">// copies of the Software, and to permit persons to whom the</span><span class="WHIT">
+<span class='line'> 10</span> </span><span class="COMM">// Software is furnished to do so, subject to the following</span><span class="WHIT">
+<span class='line'> 11</span> </span><span class="COMM">// conditions:</span><span class="WHIT">
+<span class='line'> 12</span> 
+<span class='line'> 13</span> </span><span class="COMM">// The above copyright notice and this permission notice shall be</span><span class="WHIT">
+<span class='line'> 14</span> </span><span class="COMM">// included in all copies or substantial portions of the Software.</span><span class="WHIT">
+<span class='line'> 15</span> 
+<span class='line'> 16</span> </span><span class="COMM">// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,</span><span class="WHIT">
+<span class='line'> 17</span> </span><span class="COMM">// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES</span><span class="WHIT">
+<span class='line'> 18</span> </span><span class="COMM">// OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND</span><span class="WHIT">
+<span class='line'> 19</span> </span><span class="COMM">// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT</span><span class="WHIT">
+<span class='line'> 20</span> </span><span class="COMM">// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,</span><span class="WHIT">
+<span class='line'> 21</span> </span><span class="COMM">// WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING</span><span class="WHIT">
+<span class='line'> 22</span> </span><span class="COMM">// FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR</span><span class="WHIT">
+<span class='line'> 23</span> </span><span class="COMM">// OTHER DEALINGS IN THE SOFTWARE.</span><span class="WHIT">
+<span class='line'> 24</span> 
+<span class='line'> 25</span> </span><span class="COMM">/**
+<span class='line'> 26</span>   * @version 1.0
+<span class='line'> 27</span>   * @author Asen Bozhilov
+<span class='line'> 28</span>   */</span><span class="WHIT">
+<span class='line'> 29</span> 
+<span class='line'> 30</span> </span><span class="COMM">/**
+<span class='line'> 31</span>  * @construct
+<span class='line'> 32</span>  * @param egn String   
+<span class='line'> 33</span>  */</span><span class="WHIT">
+<span class='line'> 34</span> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">EGN</span><span class="PUNC">(</span><span class="NAME">egn</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 35</span> </span><span class="WHIT">	</span><span class="NAME">this.value</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">egn</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 36</span> 
+<span class='line'> 37</span> </span><span class="WHIT">	</span><span class="NAME">this._year</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="NAME">egn.slice</span><span class="PUNC">(</span><span class="NUMB">0</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">2</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="WHIT">
+<span class='line'> 38</span> </span><span class="WHIT">	</span><span class="NAME">this._month</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="NAME">egn.slice</span><span class="PUNC">(</span><span class="NUMB">2</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">4</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="WHIT">
+<span class='line'> 39</span> </span><span class="WHIT">	</span><span class="NAME">this._date</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="NAME">egn.slice</span><span class="PUNC">(</span><span class="NUMB">4</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">6</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="WHIT">
+<span class='line'> 40</span> </span><span class="WHIT">	</span><span class="NAME">this._order</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="NAME">egn.slice</span><span class="PUNC">(</span><span class="NUMB">6</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">9</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 41</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 42</span> 
+<span class='line'> 43</span> </span><span class="NAME">EGN.prototype</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 44</span> </span><span class="WHIT">	</span><span class="NAME">constructor</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="NAME">EGN</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 45</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'> 46</span> 	  * Съдържа имената на всички региони в България, в които може да бъде записан човек при неговото раждане.
+<span class='line'> 47</span> 	  * @type Array
+<span class='line'> 48</span> 	  */</span><span class="WHIT">
+<span class='line'> 49</span> </span><span class="WHIT">	</span><span class="NAME">regionNames</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="WHIT">
+<span class='line'> 50</span> </span><span class="WHIT">		</span><span class="STRN">'Благоевград'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 51</span> </span><span class="WHIT">		</span><span class="STRN">'Бургас'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 52</span> </span><span class="WHIT">		</span><span class="STRN">'Варна'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 53</span> </span><span class="WHIT">		</span><span class="STRN">'Велико Търново'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 54</span> </span><span class="WHIT">		</span><span class="STRN">'Видин'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 55</span> </span><span class="WHIT">		</span><span class="STRN">'Враца'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 56</span> </span><span class="WHIT">		</span><span class="STRN">'Габрово'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 57</span> </span><span class="WHIT">		</span><span class="STRN">'Кърджали'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 58</span> </span><span class="WHIT">		</span><span class="STRN">'Кюстендил'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 59</span> </span><span class="WHIT">		</span><span class="STRN">'Ловеч'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 60</span> </span><span class="WHIT">		</span><span class="STRN">'Монтана'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 61</span> </span><span class="WHIT">		</span><span class="STRN">'Пазарджик'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 62</span> </span><span class="WHIT">		</span><span class="STRN">'Перник'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 63</span> </span><span class="WHIT">		</span><span class="STRN">'Плевен'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 64</span> </span><span class="WHIT">		</span><span class="STRN">'Пловдив'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 65</span> </span><span class="WHIT">		</span><span class="STRN">'Разград'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 66</span> </span><span class="WHIT">		</span><span class="STRN">'Русе'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 67</span> </span><span class="WHIT">		</span><span class="STRN">'Силистра'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 68</span> </span><span class="WHIT">		</span><span class="STRN">'Сливен'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 69</span> </span><span class="WHIT">		</span><span class="STRN">'Смолян'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 70</span> </span><span class="WHIT">		</span><span class="STRN">'София - град'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 71</span> </span><span class="WHIT">		</span><span class="STRN">'София - окръг'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 72</span> </span><span class="WHIT">		</span><span class="STRN">'Стара Загора'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 73</span> </span><span class="WHIT">		</span><span class="STRN">'Добрич (Толбухин)'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 74</span> </span><span class="WHIT">		</span><span class="STRN">'Търговище'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 75</span> </span><span class="WHIT">		</span><span class="STRN">'Хасково'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 76</span> </span><span class="WHIT">		</span><span class="STRN">'Шумен'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 77</span> </span><span class="WHIT">		</span><span class="STRN">'Ямбол'</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 78</span> </span><span class="WHIT">		</span><span class="STRN">'Друг/Неизвестен'</span><span class="WHIT">
+<span class='line'> 79</span> </span><span class="WHIT">	</span><span class="PUNC">]</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 80</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'> 81</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'> 82</span> 	 * Съдържа отделените интервали за всеки един регион. 
+<span class='line'> 83</span> 	 * Интервала е: (x, y]
+<span class='line'> 84</span> 	 * Използва се за определяне на региона.
+<span class='line'> 85</span> 	 * @private
+<span class='line'> 86</span> 	 * @type Array
+<span class='line'> 87</span> 	 */</span><span class="WHIT">
+<span class='line'> 88</span> </span><span class="WHIT">	</span><span class="NAME">_regionIds</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="PUNC">-</span><span class="NUMB">1</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">43</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">93</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">139</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">169</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">183</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">217</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">233</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">281</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">301</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">319</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">341</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">377</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">395</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">435</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">501</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">527</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">555</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">575</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">601</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">623</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">721</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">751</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">789</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">821</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">843</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">871</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">903</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">925</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">999</span><span class="PUNC">]</span><span class="PUNC">,</span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'> 89</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'> 90</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'> 91</span> 	 * На базата на числата в масива се изчислява 10-тата контролна цифра в ЕГН.
+<span class='line'> 92</span> 	 * Използва се за валидация на ЕГН.
+<span class='line'> 93</span> 	 * @private
+<span class='line'> 94</span> 	 * @type Array
+<span class='line'> 95</span> 	 */</span><span class="WHIT">
+<span class='line'> 96</span> </span><span class="WHIT">	</span><span class="NAME">_weights</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="PUNC">[</span><span class="NUMB">2</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">4</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">8</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">5</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">10</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">9</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">7</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">3</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">6</span><span class="PUNC">]</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 97</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'> 98</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'> 99</span> 	  * Проверява валидността на ЕГН.
+<span class='line'>100</span> 	  * Датата на раждане се проверява за валидност спрямо Григорианският календар.
+<span class='line'>101</span> 	  * @type Boolean value
+<span class='line'>102</span> 	  */</span><span class="WHIT">
+<span class='line'>103</span> </span><span class="WHIT">	</span><span class="NAME">isValid</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="WHIT">
+<span class='line'>104</span> </span><span class="WHIT">	</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>105</span> </span><span class="WHIT">		</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">egn</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.value</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>106</span> </span><span class="WHIT">			</span><span class="NAME">bornDate</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.getBornDate</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>107</span> </span><span class="WHIT">			</span><span class="NAME">month</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this._month</span><span class="WHIT"> </span><span class="PUNC">%</span><span class="WHIT"> </span><span class="NUMB">20</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>108</span> </span><span class="WHIT">			</span><span class="WHIT">
+<span class='line'>109</span> </span><span class="WHIT">		</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">egn.length</span><span class="WHIT"> </span><span class="PUNC">!=</span><span class="WHIT"> </span><span class="NUMB">10</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="REGX">/\D/</span><span class="PUNC">.</span><span class="NAME">test</span><span class="PUNC">(</span><span class="NAME">egn</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">bornDate.getMonth</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!=</span><span class="WHIT"> </span><span class="NAME">month</span><span class="WHIT"> </span><span class="PUNC">||</span><span class="WHIT"> </span><span class="NAME">bornDate.getDate</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">!=</span><span class="WHIT"> </span><span class="NAME">this._date</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="WHIT">
+<span class='line'>110</span> </span><span class="WHIT">		</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>111</span> </span><span class="WHIT">			</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>112</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>113</span> </span><span class="WHIT">		</span><span class="WHIT">
+<span class='line'>114</span> </span><span class="WHIT">		</span><span class="NAME">egn</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">egn.split</span><span class="PUNC">(</span><span class="STRN">''</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>115</span> </span><span class="WHIT">		</span><span class="KEYW">for</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">i</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this._weights.length</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">sum</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">;</span><span class="WHIT"> </span><span class="NAME">i</span><span class="PUNC">--</span><span class="PUNC">;</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>116</span> </span><span class="WHIT">		</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>117</span> </span><span class="WHIT">			</span><span class="NAME">sum</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this._weights</span><span class="PUNC">[</span><span class="NAME">i</span><span class="PUNC">]</span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="NAME">egn</span><span class="PUNC">[</span><span class="NAME">i</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>118</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>119</span> </span><span class="WHIT">		</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">sum</span><span class="WHIT"> </span><span class="PUNC">%</span><span class="WHIT"> </span><span class="NUMB">11</span><span class="WHIT"> </span><span class="PUNC">%</span><span class="WHIT"> </span><span class="NUMB">10</span><span class="WHIT"> </span><span class="PUNC">!=</span><span class="WHIT"> </span><span class="NAME">egn</span><span class="PUNC">[</span><span class="NUMB">9</span><span class="PUNC">]</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="WHIT">
+<span class='line'>120</span> </span><span class="WHIT">		</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>121</span> </span><span class="WHIT">			</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>122</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>123</span> </span><span class="WHIT">		</span><span class="WHIT">
+<span class='line'>124</span> </span><span class="WHIT">		</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>125</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>126</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'>127</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'>128</span> 	  * Извлича датата на раждане.
+<span class='line'>129</span> 	  * @type Date
+<span class='line'>130</span> 	  */</span><span class="WHIT">
+<span class='line'>131</span> </span><span class="WHIT">	</span><span class="NAME">getBornDate</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="WHIT">
+<span class='line'>132</span> </span><span class="WHIT">	</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>133</span> </span><span class="WHIT">		</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">year</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">1900</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>134</span> </span><span class="WHIT">		</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this._month</span><span class="WHIT"> </span><span class="PUNC">></span><span class="WHIT"> </span><span class="NUMB">40</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="WHIT">
+<span class='line'>135</span> </span><span class="WHIT">		</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>136</span> </span><span class="WHIT">			</span><span class="NAME">year</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">100</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>137</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>138</span> </span><span class="WHIT">		</span><span class="KEYW">else</span><span class="WHIT"> </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this._month</span><span class="WHIT"> </span><span class="PUNC">></span><span class="WHIT"> </span><span class="NUMB">20</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="WHIT">
+<span class='line'>139</span> </span><span class="WHIT">		</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>140</span> </span><span class="WHIT">			</span><span class="NAME">year</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">100</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>141</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>142</span> </span><span class="WHIT">		</span><span class="WHIT">
+<span class='line'>143</span> </span><span class="WHIT">		</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Date</span><span class="PUNC">(</span><span class="NAME">year</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">this._year</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this._month</span><span class="WHIT"> </span><span class="PUNC">%</span><span class="WHIT"> </span><span class="NUMB">20</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">this._date</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>144</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>145</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'>146</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'>147</span> 	  * Изчислява региона, на който отговаря ЕГН-то.
+<span class='line'>148</span> 	  * @type Number value
+<span class='line'>149</span> 	  * @return Името на региона може да се вземе като се използва върнатия резултат за индекс в масива &lt;code>regionNames&lt;/code>.
+<span class='line'>150</span> 	  * @see #regionNames
+<span class='line'>151</span> 	  */</span><span class="WHIT">
+<span class='line'>152</span> </span><span class="WHIT">	</span><span class="NAME">getRegion</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="WHIT">
+<span class='line'>153</span> </span><span class="WHIT">	</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>154</span> </span><span class="WHIT">		</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="KEYW">typeof</span><span class="WHIT"> </span><span class="NAME">this._region</span><span class="WHIT"> </span><span class="PUNC">!=</span><span class="WHIT"> </span><span class="STRN">'number'</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="WHIT">
+<span class='line'>155</span> </span><span class="WHIT">		</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>156</span> </span><span class="WHIT">			</span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">start</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>157</span> </span><span class="WHIT">				</span><span class="NAME">end</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this._regionIds.length</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>158</span> </span><span class="WHIT">				</span><span class="NAME">middle</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">lower_b</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">upper_b</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>159</span> </span><span class="WHIT">			</span><span class="WHIT">
+<span class='line'>160</span> </span><span class="WHIT">			</span><span class="KEYW">while</span><span class="PUNC">(</span><span class="NAME">start</span><span class="WHIT"> </span><span class="PUNC">&lt;=</span><span class="WHIT"> </span><span class="NAME">end</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>161</span> </span><span class="WHIT">			</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>162</span> </span><span class="WHIT">				</span><span class="NAME">middle</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">Math.floor</span><span class="PUNC">(</span><span class="PUNC">(</span><span class="NAME">end</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">start</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">/</span><span class="WHIT"> </span><span class="NUMB">2</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>163</span> </span><span class="WHIT">				</span><span class="NAME">lower_b</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this._regionIds</span><span class="PUNC">[</span><span class="NAME">middle</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>164</span> </span><span class="WHIT">				</span><span class="NAME">upper_b</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this._regionIds</span><span class="PUNC">[</span><span class="NAME">middle</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>165</span> </span><span class="WHIT">				</span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this._order</span><span class="WHIT"> </span><span class="PUNC">></span><span class="WHIT"> </span><span class="NAME">upper_b</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="WHIT">
+<span class='line'>166</span> </span><span class="WHIT">				</span><span class="PUNC">{</span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'>167</span> </span><span class="WHIT">					</span><span class="NAME">start</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">middle</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>168</span> </span><span class="WHIT">				</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>169</span> </span><span class="WHIT">				</span><span class="KEYW">else</span><span class="WHIT"> </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this._order</span><span class="WHIT"> </span><span class="PUNC">&lt;</span><span class="WHIT"> </span><span class="NAME">lower_b</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>170</span> </span><span class="WHIT">				</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>171</span> </span><span class="WHIT">					</span><span class="NAME">end</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">middle</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>172</span> </span><span class="WHIT">				</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>173</span> </span><span class="WHIT">				</span><span class="KEYW">else</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>174</span> </span><span class="WHIT">					</span><span class="NAME">this._region</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">middle</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>175</span> </span><span class="WHIT">					</span><span class="KEYW">break</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>176</span> </span><span class="WHIT">				</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>177</span> </span><span class="WHIT">			</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>178</span> </span><span class="WHIT">		</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>179</span> </span><span class="WHIT">		</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this._region</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>180</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>181</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'>182</span> </span><span class="WHIT">	</span><span class="COMM">/** 
+<span class='line'>183</span> 	  * Изчислява поредността на раждане за региона.
+<span class='line'>184</span> 	  * @type Number value
+<span class='line'>185</span> 	  */</span><span class="WHIT">
+<span class='line'>186</span> </span><span class="WHIT">	</span><span class="NAME">getOrderByRegion</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="WHIT">
+<span class='line'>187</span> </span><span class="WHIT">	</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>188</span> </span><span class="WHIT">		</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this._order</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="WHIT"> </span><span class="NAME">this._regionIds</span><span class="PUNC">[</span><span class="NAME">this.getRegion</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">]</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>189</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>190</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'>191</span> </span><span class="WHIT">	</span><span class="COMM">/** 
+<span class='line'>192</span> 	  * Изчислява поредността на раждане за региона, спрямо хората от същия пол.
+<span class='line'>193</span> 	  * @type Number value
+<span class='line'>194</span> 	  */</span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'>195</span> </span><span class="WHIT">	</span><span class="NAME">getSexOrderByRegion</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>196</span> </span><span class="WHIT">	</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>197</span> </span><span class="WHIT">		</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">Math.ceil</span><span class="PUNC">(</span><span class="NAME">this.getOrderByRegion</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">/</span><span class="WHIT"> </span><span class="NUMB">2</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>198</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>199</span> </span><span class="WHIT">	</span><span class="WHIT">
+<span class='line'>200</span> </span><span class="WHIT">	</span><span class="COMM">/**
+<span class='line'>201</span> 	  * Определяне на пола.
+<span class='line'>202</span> 	  * @type Number value
+<span class='line'>203</span> 	  * @return 0 - мъж&lt;br /> 1 - жена
+<span class='line'>204</span> 	  */</span><span class="WHIT">
+<span class='line'>205</span> </span><span class="WHIT">	</span><span class="NAME">getSex</span><span class="WHIT"> </span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="WHIT">
+<span class='line'>206</span> </span><span class="WHIT">	</span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>207</span> </span><span class="WHIT">		</span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this._order</span><span class="WHIT"> </span><span class="PUNC">%</span><span class="WHIT"> </span><span class="NUMB">2</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>208</span> </span><span class="WHIT">	</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>209</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>210</span> 
+<span class='line'>211</span> </span></pre></body></html>
